@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from bs4 import BeautifulSoup
 import urllib.request
 
@@ -40,4 +42,4 @@ def menu():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0')
