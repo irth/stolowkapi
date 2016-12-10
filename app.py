@@ -11,10 +11,11 @@ def get_menu():
 
     soup = BeautifulSoup(html_doc, 'html.parser')
     ignore = True
-    menu = []
+    menu = {}
     for tr in soup.table.find_all("tr"):
         if tr.get_text().strip() in ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek"]:
             ignore = False
+            weekday = tr.get_text().strip()
             continue
         if ignore or tr.get_text().strip() == "":
             continue
@@ -22,7 +23,7 @@ def get_menu():
         for bobiad in tr.find_all("td", class_="bobiad"):
             if bobiad.get_text().strip() != '':
                 day.append(bobiad.get_text().strip())
-        menu.append(day)
+        menu[weekday] = day
     return menu
 
 
@@ -40,4 +41,4 @@ def menu():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0')
