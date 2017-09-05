@@ -3,7 +3,7 @@
 from bs4 import BeautifulSoup
 import urllib.request
 
-from flask import Flask
+from flask import Flask, Response
 import json
 
 
@@ -33,12 +33,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    return "Stolowka 23 menu API. Try /menu\n"
+    return Response("Stolowka 23 menu API. Try /menu\n", mimetype="text/plain")
 
 
 @app.route("/menu")
 def menu():
-    return json.dumps(get_menu()) + '\n'
+    return Response(json.dumps(get_menu()), mimetype='application/json; charset=utf-8')
 
 
 if __name__ == '__main__':
