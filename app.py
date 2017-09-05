@@ -33,10 +33,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    return Response("Stolowka 23 menu API. Try /menu.json\n", mimetype="text/plain")
+    return Response("Stolowka 23 menu API. Try /menu\n", mimetype="text/plain")
 
 
-@app.route("/menu.json")
+@app.route("/menu")
 def menu():
     return Response(json.dumps(get_menu()), mimetype='application/json; charset=utf-8')
 
